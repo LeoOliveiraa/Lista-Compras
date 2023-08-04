@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    
+<header>
+  <h1>Lista dos Desejos</h1>
+</header>
+
+
+<main>
+
+    <div class="title">
+        <h2>Itens</h2>
+        <span>Lista de itens que temos que comprar!</span>
+    </div>
+
+
+    <div class="card">
+        <div class="lineInput">
+            <label for="">Produto</label>
+            <input type="text" id="produto" placeholder="Nome do produto">
+        </div>
+
+        <div class="lineInput">
+            <label for="">Valor</label>
+            <input type="text" id="valor" placeholder="Valor do produto">
+        </div>
+
+        <div class="button">
+    <button onclick="produto.salvar()">Salvar</button>
+    <button onclick="produto.cancelar()">Cancelar</button>
+        </div>
+    </div>
+
+    <div class="content">
+        <table border="1">
+            <thead>
+                <th>Item</th>
+                <th>Valor</th>
+                <th>Ações</th>
+            </thead>
+            <tbody id="tbody">
+                
+            </tbody>
+        </table>
+    </div>
+
+</main>
+
+
+
+
+ <script src="script.js"></script>   
+</body>
+</html>
