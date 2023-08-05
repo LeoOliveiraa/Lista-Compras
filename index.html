@@ -29,11 +29,11 @@
 
         <div class="lineInput">
             <label for="">Valor</label>
-            <input type="text" id="valor" placeholder="Valor do produto">
+            <input type="number" id="valor" placeholder="Valor do produto">
         </div>
 
         <div class="button">
-    <button onclick="produto.salvar()">Salvar</button>
+    <button onclick="produto.salvar()" id="btn-1">Salvar</button>
     <button onclick="produto.cancelar()">Cancelar</button>
         </div>
     </div>
@@ -41,9 +41,10 @@
     <div class="content">
         <table border="1">
             <thead>
+                <th>ID</th>
                 <th>Item</th>
                 <th>Valor</th>
-                <th>Ações</th>
+                <th>Editar / Deletar</th>
             </thead>
             <tbody id="tbody">
                 
