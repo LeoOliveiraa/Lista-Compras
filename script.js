@@ -63,9 +63,9 @@ class Produto {
     atualizar(id, produto) {
         
         for (let i = 0; i < this.arrayProdutos.length; i++) {
-            if(this.arrayProdutos[i].id == id) {
+            if(this.arrayProdutos[i].id === id) {
                 this.arrayProdutos[i].nomeProduto = produto.nomeProduto;
-                this.arrayProdutos[i].valor = produto.valor;
+                this.arrayProdutos[i].valor = parseFloat(produto.valor);
             }
         }
         this.atualizarValorTotal();
@@ -145,6 +145,7 @@ class Produto {
                 tbody.deleteRow(i);
             }
         }
+        this.listaTabela();
         this.atualizarValorTotal();
     }
 
