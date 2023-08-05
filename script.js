@@ -3,6 +3,7 @@ class Produto {
         this.id = 1;
        this.arrayProdutos = [];
        this.editId = null;
+       
     }
 
     salvar() {
@@ -49,19 +50,26 @@ class Produto {
         }
     }
 
+    
+
     adicionar(produto) {
         produto.valor = parseFloat(produto.valor)
         this.arrayProdutos.push(produto);
         this.id++;
+        this.atualizarValorTotal();
+        
     }
 
     atualizar(id, produto) {
+        
         for (let i = 0; i < this.arrayProdutos.length; i++) {
             if(this.arrayProdutos[i].id == id) {
                 this.arrayProdutos[i].nomeProduto = produto.nomeProduto;
                 this.arrayProdutos[i].valor = produto.valor;
             }
         }
+        this.atualizarValorTotal();
+        
     }
 
     edicao(dados) {
@@ -111,6 +119,21 @@ class Produto {
 
     }
 
+    calcularSoma() {
+        let somaTotal = 0;
+        for (let i = 0; i < this.arrayProdutos.length; i ++) {
+            somaTotal += this.arrayProdutos[i].valor;
+        }
+        return somaTotal;
+    }
+
+    atualizarValorTotal() {
+        let totalSomaElement = document.getElementById('totalSoma');
+        let somaTotal = this.calcularSoma();
+        totalSomaElement.innerText = `Soma total: R$ ${somaTotal.toFixed(2)}`;
+    }
+
+
     deletar(id) {
 
         if(confirm('Deseja realmente excluir o item de ID ' +id+ '?')){
@@ -122,10 +145,22 @@ class Produto {
                 tbody.deleteRow(i);
             }
         }
-
+        this.atualizarValorTotal();
     }
 
-    }
+    
+    
+    
 }
 
+}
+    
 var produto = new Produto()
+
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('btn-calcular').addEventListener('click', function() {
+        let totalSomaElement = document.getElementById('totalSoma');
+        let somaTotal = produto.calcularSoma();
+        totalSomaElement.innerText = `Soma total: R$ ${somaTotal.toFixed(2)}`; 
+    });
+});

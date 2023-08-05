@@ -14,7 +14,7 @@ body {
 header {
     padding: 10px;
     text-align: center;
-    color: #0000FF;
+    color: #FFFFFF;
     background-color: #000000;
 }
 
@@ -76,7 +76,7 @@ button {
     font-weight: 700;
     color: #FFFFFF;
     align-items: center;
-    width: 45%;
+    width: 30%;
     cursor: pointer;
     transition: all ease .5s;
 }
@@ -110,3 +110,22 @@ table td img {
     
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+
+#btn-calcular {
+    display: none;
+}
+
+#totalSoma {
+    color: #000000;
+    font-weight: bold;
+    font-size: 24px;
+    text-align: center;
+    padding-top: 10px;
+
+}
