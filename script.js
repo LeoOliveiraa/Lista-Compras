@@ -33,7 +33,7 @@ class Produto {
 
             td_id.innerText = this.arrayProdutos[i].id;
             td_item.innerText = this.arrayProdutos[i].nomeProduto
-            td_valor.innerText = this.arrayProdutos[i].valor
+            td_valor.innerText = parseFloat(this.arrayProdutos[i].valor).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 
             let imgEdit = document.createElement('img');
             imgEdit.src = 'img/editar.svg';
@@ -80,6 +80,7 @@ class Produto {
         produto.id = this.id;
         produto.nomeProduto = document.getElementById('produto').value;
         produto.valor = document.getElementById('valor').value;
+
 
         return produto;
     }
