@@ -61,7 +61,11 @@
 </main>
 
 
-
+<script>
+    window.addEventListener('beforeunload', function () {
+           produto.atualizarLocalStorage();
+       });
+</script>
 
  <script src="script.js"></script>   
 </body>

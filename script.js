@@ -3,7 +3,19 @@ class Produto {
         this.id = 1;
        this.arrayProdutos = [];
        this.editId = null;
+
+       const storedData = localStorage.getItem('produtos');
+        if (storedData) {
+            this.arrayProdutos = JSON.parse(storedData);
+            this.id = this.arrayProdutos.length + 1; 
+            this.listaTabela(); 
+        }
        
+    }
+
+
+    atualizarLocalStorage() {
+        localStorage.setItem('produtos', JSON.stringify(this.arrayProdutos));
     }
 
     salvar() {
@@ -15,7 +27,8 @@ class Produto {
                 this.atualizar(this.editId, produto);
             }
             
-       }   
+       }
+       this.atualizarLocalStorage();   
        this.listaTabela();
        this.cancelar();
     }
@@ -50,14 +63,17 @@ class Produto {
         }
     }
 
-    
+     ordenarPorId() {
+        this.arrayProdutos.sort((a, b) => a.id - b.id);
+    }
 
     adicionar(produto) {
         produto.valor = parseFloat(produto.valor)
         this.arrayProdutos.push(produto);
         this.id++;
         this.atualizarValorTotal();
-        
+        this.atualizarLocalStorage();
+        this.ordenarPorId();
     }
 
     atualizar(id, produto) {
@@ -68,6 +84,7 @@ class Produto {
                 this.arrayProdutos[i].valor = parseFloat(produto.valor);
             }
         }
+        this.atualizarLocalStorage();
         this.atualizarValorTotal();
         
     }
@@ -116,6 +133,7 @@ class Produto {
 
         document.getElementById('btn-1').innerText = 'Salvar';
         this.editId = null;
+        this.atualizarLocalStorage();
 
     }
 
@@ -147,15 +165,15 @@ class Produto {
         }
         this.listaTabela();
         this.atualizarValorTotal();
+        this.atualizarLocalStorage();
+        this.ordenarPorId();
     }
 
     
     
-    
 }
 
-}
-    
+}  
 var produto = new Produto()
 
 document.addEventListener('DOMContentLoaded', function() {
